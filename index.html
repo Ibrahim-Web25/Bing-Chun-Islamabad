@@ -98,7 +98,7 @@
       gap: 0.6rem;
       text-decoration: none;
     }
-    .nav-logo img { width: 42px; height: 42px; object-fit: contain; }
+    .nav-logo img { width: 42px; height: 42px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
     .nav-logo span {
       font-weight: 900;
       font-size: 1.25rem;
@@ -198,6 +198,14 @@
     }
     .mobile-menu a:hover { color: var(--bc-blue); transform: scale(1.05); }
     .mobile-menu .nav-cta { font-size: 1.1rem; padding: 0.9rem 2rem; }
+    .mobile-socials { display: flex; gap: 1rem; margin-top: 0.5rem; }
+    .mobile-socials a {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--bc-sky); display: grid; place-items: center;
+      color: var(--bc-blue-dark); text-decoration: none; transition: background 0.3s, transform 0.3s;
+    }
+    .mobile-socials a:hover { background: var(--bc-blue); color: white; transform: translateY(-3px); }
+    .mobile-socials svg { width: 22px; height: 22px; }
 
     .hero {
       position: relative;
@@ -334,7 +342,7 @@
     }
     .hero-drink {
       position: relative;
-      width: min(90%, 520px);
+      width: min(90%, 460px);
       z-index: 20;
       filter: drop-shadow(0 40px 80px rgba(30, 136, 229, 0.25));
       transition: transform 0.2s ease-out;
@@ -343,7 +351,8 @@
       width: 100%;
       height: auto;
       object-fit: contain;
-      border-radius: 24px;
+      border-radius: 28px;
+      display: block;
     }
     .float-element {
       position: absolute;
@@ -351,22 +360,21 @@
       z-index: 15;
       will-change: transform;
     }
-    .float-berry { width: 90px; top: 10%; right: 5%; animation: float1 6s ease-in-out infinite; }
-    .float-lemon { width: 110px; bottom: 15%; left: 0; animation: float2 7s ease-in-out infinite; }
-    .float-mango { width: 80px; top: 55%; right: -5%; animation: float3 5s ease-in-out infinite; }
-    .float-ice { width: 70px; top: 20%; left: -5%; animation: float1 8s ease-in-out infinite; }
-    @keyframes float1 { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(8deg); } }
-    @keyframes float2 { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(-6deg); } }
-    @keyframes float3 { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-25px) rotate(10deg); } }
 
     .mascot-peek {
       position: absolute;
-      bottom: 5%;
-      right: 8%;
-      width: 140px;
+      bottom: 2%;
+      right: 4%;
+      width: 150px;
+      height: 150px;
       z-index: 25;
       animation: mascotPeek 4s ease-in-out infinite;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid white;
+      box-shadow: 0 20px 40px rgba(13,27,42,0.25);
     }
+    .mascot-peek img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @keyframes mascotPeek {
       0%, 100% { transform: translateY(0) rotate(-3deg); }
       50% { transform: translateY(-12px) rotate(3deg); }
@@ -425,6 +433,8 @@
     }
     .signature-visual .main-img {
       width: min(100%, 480px);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
       border-radius: 32px;
       box-shadow: 0 40px 80px rgba(30, 136, 229, 0.15);
       transform: rotate(-3deg);
@@ -434,8 +444,11 @@
     .signature-visual .accent-img {
       position: absolute;
       width: 180px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
       border-radius: 20px;
       box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+      border: 4px solid white;
     }
     .signature-visual .accent-img.top { top: 5%; right: 5%; transform: rotate(8deg); }
     .signature-visual .accent-img.bottom { bottom: 5%; left: 0; transform: rotate(-6deg); width: 160px; }
@@ -649,10 +662,21 @@
       justify-content: center;
       position: relative;
     }
-    .mascot-visual img {
-      width: min(100%, 420px);
-      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.25));
+    .mascot-visual .mascot-badge {
+      width: min(100%, 380px);
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: white;
+      padding: 18px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.3);
       animation: mascotFloat 5s ease-in-out infinite;
+    }
+    .mascot-visual .mascot-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
     }
     @keyframes mascotFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
     .mascot-content h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin: 0 0 1rem; }
@@ -723,9 +747,12 @@
     }
     .order-visual img {
       width: min(100%, 460px);
+      aspect-ratio: 1/1;
+      object-fit: cover;
       border-radius: 32px;
       box-shadow: 0 40px 80px rgba(30, 136, 229, 0.2);
       transform: rotate(3deg);
+      display: block;
     }
 
     .location-section {
@@ -838,7 +865,7 @@
       gap: 3rem;
       margin-bottom: 3rem;
     }
-    .footer-brand img { width: 60px; margin-bottom: 1rem; }
+    .footer-brand img { width: 60px; height: 60px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
     .footer-brand h3 { margin: 0 0 0.75rem; font-size: 1.5rem; }
     .footer-brand p { color: rgba(255,255,255,0.7); line-height: 1.6; font-size: 0.95rem; }
     .footer-links h4 { margin: 0 0 1rem; font-size: 1rem; }
@@ -870,6 +897,7 @@
       transition: background 0.3s, transform 0.3s;
     }
     .socials a:hover { background: var(--bc-blue); transform: translateY(-3px); }
+    .socials svg { width: 19px; height: 19px; }
 
     @media (max-width: 1024px) {
       .hero-content { grid-template-columns: 1fr; text-align: center; }
@@ -889,12 +917,8 @@
       .hero { padding: 6rem 1.25rem 3rem; }
       .hero-title { font-size: clamp(3.2rem, 14vw, 5rem); }
       .hero-visual { min-height: 340px; }
-      .hero-drink { width: min(95%, 320px); }
-      .float-berry { width: 60px; }
-      .float-lemon { width: 70px; }
-      .float-mango { width: 55px; }
-      .float-ice { width: 50px; }
-      .mascot-peek { width: 90px; }
+      .hero-drink { width: min(95%, 300px); }
+      .mascot-peek { width: 95px; height: 95px; }
       .drink-showcase { grid-template-columns: 1fr; }
       .drink-card.tall { grid-row: span 1; min-height: 320px; }
       .menu-grid, .reviews-grid { grid-template-columns: 1fr; }
@@ -920,33 +944,17 @@
     }
   </style>
 </head>
-
+<body>
   <!-- Loader -->
   <div id="loader">
-    <svg class="loader-mascot" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="60" cy="60" r="55" fill="#fff"/>
-      <circle cx="42" cy="50" r="8" fill="#0D1B2A"/>
-      <circle cx="78" cy="50" r="8" fill="#0D1B2A"/>
-      <ellipse cx="60" cy="72" rx="12" ry="8" fill="#FF5252"/>
-      <circle cx="30" cy="60" r="10" fill="#64B5F6" opacity="0.6"/>
-      <circle cx="90" cy="60" r="10" fill="#64B5F6" opacity="0.6"/>
-      <path d="M35 85 Q60 105 85 85" stroke="#0D1B2A" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <rect x="45" y="5" width="30" height="20" rx="10" fill="#1E88E5"/>
-    </svg>
+    <img class="loader-mascot" src="__MASCOT__" alt="Bing Chun mascot" />
     <div class="loader-text">BING CHUN</div>
   </div>
 
   <!-- Navigation -->
   <nav id="navbar">
     <a href="#" class="nav-logo">
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="24" cy="24" r="22" fill="#1E88E5"/>
-        <circle cx="18" cy="20" r="3" fill="#fff"/>
-        <circle cx="30" cy="20" r="3" fill="#fff"/>
-        <ellipse cx="24" cy="29" rx="5" ry="3" fill="#FF5252"/>
-        <path d="M16 35 Q24 42 32 35" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <rect x="20" y="2" width="8" height="8" rx="4" fill="#1565C0"/>
-      </svg>
+      <img src="__MASCOT__" alt="Bing Chun logo" />
       <span>BING CHUN</span>
     </a>
     <ul class="nav-links">
@@ -968,6 +976,14 @@
     <a href="#desserts" class="mobile-link">DESSERTS</a>
     <a href="#location" class="mobile-link">LOCATION</a>
     <a href="#order" class="nav-cta">ORDER NOW</a>
+    <div class="mobile-socials">
+      <a href="https://www.instagram.com/bingchunpwd/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
+      <a href="https://www.facebook.com/p/Bing-chun-Pwd-61589897880345/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.25-1.5 1.55-1.5H16.5V4.35C16.2 4.3 15.2 4.2 14.05 4.2c-2.4 0-4.05 1.47-4.05 4.15V10.5H7.5v3H10V21h3.5z"/></svg>
+      </a>
+    </div>
   </div>
 
   <!-- Hero -->
@@ -991,22 +1007,11 @@
       </div>
       <div class="hero-visual">
         <div class="hero-drink" id="heroDrink">
-          <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=85" alt="Bing Chun signature milk tea with boba" loading="eager" />
+          <img src="__HERO__" alt="Bing Chun strawberry lemon lime fruit tea" loading="eager" />
         </div>
-        <img class="float-element float-berry" src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=200&q=80" alt="strawberry" loading="lazy" />
-        <img class="float-element float-lemon" src="https://images.unsplash.com/photo-1590502593747-42a996133562?w=200&q=80" alt="lemon" loading="lazy" />
-        <img class="float-element float-mango" src="https://images.unsplash.com/photo-1553279768-865429fa0078?w=200&q=80" alt="mango" loading="lazy" />
-        <img class="float-element float-ice" src="https://images.unsplash.com/photo-1516559828987-4e521a4f5afd?w=200&q=80" alt="ice cubes" loading="lazy" />
-        <svg class="mascot-peek" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="70" cy="70" r="60" fill="#1E88E5"/>
-          <circle cx="55" cy="58" r="8" fill="#fff"/>
-          <circle cx="85" cy="58" r="8" fill="#fff"/>
-          <circle cx="55" cy="58" r="4" fill="#0D1B2A"/>
-          <circle cx="85" cy="58" r="4" fill="#0D1B2A"/>
-          <ellipse cx="70" cy="78" rx="10" ry="7" fill="#FF5252"/>
-          <path d="M45 95 Q70 115 95 95" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
-          <rect x="55" y="5" width="30" height="18" rx="9" fill="#1565C0"/>
-        </svg>
+        <div class="mascot-peek">
+          <img src="__MASCOT__" alt="Bing Chun mascot" />
+        </div>
       </div>
     </div>
   </section>
@@ -1016,9 +1021,9 @@
     <div class="container">
       <div class="signature-grid">
         <div class="signature-visual">
-          <img class="main-img" src="https://images.unsplash.com/photo-1546173159-315724a31696?w=800&q=85" alt="Bing Chun ice cream sundae" loading="lazy" />
-          <img class="accent-img top" src="https://images.unsplash.com/photo-1572490122749-3968b3199557?w=400&q=80" alt="fruit tea" loading="lazy" />
-          <img class="accent-img bottom" src="https://images.unsplash.com/photo-1577805947690-3eaa69f930ce?w=400&q=80" alt="smoothie" loading="lazy" />
+          <img class="main-img" src="__SIG_MAIN__" alt="Bing Chun strawberry milk drink" loading="lazy" />
+          <img class="accent-img top" src="__SIG_TOP__" alt="Bing Chun mulberry sundae" loading="lazy" />
+          <img class="accent-img bottom" src="__SIG_BOTTOM__" alt="Bing Chun mango strawberry fruit tea" loading="lazy" />
         </div>
         <div class="signature-content">
           <p class="section-label">The Bing Chun Experience</p>
@@ -1045,7 +1050,7 @@
       </div>
       <div class="drink-showcase">
         <div class="drink-card tall">
-          <img class="bg-img" src="https://images.unsplash.com/photo-1558857563-b371033873b8?w=800&q=85" alt="Milk Tea" loading="lazy" />
+          <img class="bg-img" src="__CARD_MILKTEA__" alt="Milk Tea" loading="lazy" />
           <div class="overlay"></div>
           <span class="price-tag">From Rs 350</span>
           <div class="drink-card-content">
@@ -1054,7 +1059,7 @@
           </div>
         </div>
         <div class="drink-card">
-          <img class="bg-img" src="https://images.unsplash.com/photo-1513558161293-cdaf22ed9fee?w=800&q=85" alt="Fresh Fruit Tea" loading="lazy" />
+          <img class="bg-img" src="__CARD_FRUITTEA__" alt="Fresh Fruit Tea" loading="lazy" />
           <div class="overlay"></div>
           <span class="price-tag">From Rs 200</span>
           <div class="drink-card-content">
@@ -1063,7 +1068,7 @@
           </div>
         </div>
         <div class="drink-card">
-          <img class="bg-img" src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=800&q=85" alt="Shakes" loading="lazy" />
+          <img class="bg-img" src="__CARD_SHAKES__" alt="Shakes" loading="lazy" />
           <div class="overlay"></div>
           <span class="price-tag">From Rs 550</span>
           <div class="drink-card-content">
@@ -1072,7 +1077,7 @@
           </div>
         </div>
         <div class="drink-card">
-          <img class="bg-img" src="https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=800&q=85" alt="Smoothies" loading="lazy" />
+          <img class="bg-img" src="__CARD_SMOOTHIES__" alt="Smoothies" loading="lazy" />
           <div class="overlay"></div>
           <span class="price-tag">From Rs 500</span>
           <div class="drink-card-content">
@@ -1081,7 +1086,7 @@
           </div>
         </div>
         <div class="drink-card">
-          <img class="bg-img" src="https://images.unsplash.com/photo-1560008581-09826d1de69e?w=800&q=85" alt="Ice Cream" loading="lazy" />
+          <img class="bg-img" src="__CARD_ICECREAM__" alt="Ice Cream" loading="lazy" />
           <div class="overlay"></div>
           <span class="price-tag">From Rs 200</span>
           <div class="drink-card-content">
@@ -1172,21 +1177,9 @@
   <section class="mascot-section">
     <div class="container mascot-inner">
       <div class="mascot-visual">
-        <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="210" cy="210" r="180" fill="#fff"/>
-          <circle cx="160" cy="170" r="22" fill="#0D1B2A"/>
-          <circle cx="260" cy="170" r="22" fill="#0D1B2A"/>
-          <circle cx="160" cy="170" r="10" fill="#fff"/>
-          <circle cx="260" cy="170" r="10" fill="#fff"/>
-          <ellipse cx="210" cy="210" rx="28" ry="20" fill="#FF5252"/>
-          <path d="M140 260 Q210 310 280 260" stroke="#0D1B2A" stroke-width="10" fill="none" stroke-linecap="round"/>
-          <circle cx="100" cy="200" r="26" fill="#64B5F6" opacity="0.5"/>
-          <circle cx="320" cy="200" r="26" fill="#64B5F6" opacity="0.5"/>
-          <circle cx="210" cy="80" r="30" fill="#1E88E5"/>
-          <rect x="170" y="15" width="80" height="40" rx="20" fill="#1565C0"/>
-          <path d="M120 120 Q90 130 100 160" stroke="#64B5F6" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <path d="M300 120 Q330 130 320 160" stroke="#64B5F6" stroke-width="6" fill="none" stroke-linecap="round"/>
-        </svg>
+        <div class="mascot-badge">
+          <img src="__MASCOT__" alt="Bing Chun mascot" />
+        </div>
       </div>
       <div class="mascot-content">
         <h2>Meet the Bing Chun Mascot</h2>
@@ -1226,7 +1219,7 @@
         </div>
       </div>
       <div class="order-visual">
-        <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=800&q=85" alt="Bing Chun takeaway drinks" loading="lazy" />
+        <img src="__ORDER_VISUAL__" alt="Bing Chun blueberry fruit tea takeaway" loading="lazy" />
       </div>
     </div>
   </section>
@@ -1317,14 +1310,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="28" fill="#1E88E5"/>
-            <circle cx="22" cy="24" r="4" fill="#fff"/>
-            <circle cx="38" cy="24" r="4" fill="#fff"/>
-            <ellipse cx="30" cy="34" rx="7" ry="5" fill="#FF5252"/>
-            <path d="M20 42 Q30 50 40 42" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <rect x="24" y="4" width="12" height="10" rx="5" fill="#1565C0"/>
-          </svg>
+          <img src="__MASCOT__" alt="Bing Chun logo" />
           <h3>BING CHUN PAKISTAN</h3>
           <p>Ice Cream & Tea — serving playful, premium drinks and desserts in Islamabad PWD.</p>
         </div>
@@ -1348,9 +1334,12 @@
         <div class="footer-links">
           <h4>Follow</h4>
           <div class="socials">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="Facebook">FB</a>
-            <a href="#" aria-label="TikTok">TT</a>
+            <a href="https://www.instagram.com/bingchunpwd/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </a>
+            <a href="https://www.facebook.com/p/Bing-chun-Pwd-61589897880345/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.25-1.5 1.55-1.5H16.5V4.35C16.2 4.3 15.2 4.2 14.05 4.2c-2.4 0-4.05 1.47-4.05 4.15V10.5H7.5v3H10V21h3.5z"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -1443,9 +1432,6 @@
       });
       gsap.from('.hero-drink', {
         scale: 0.85, opacity: 0, duration: 1.4, ease: 'expo.out', delay: 0.5
-      });
-      gsap.from('.float-element', {
-        y: 60, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: 0.15, delay: 0.9
       });
       gsap.from('.mascot-peek', {
         y: 100, opacity: 0, duration: 1, ease: 'back.out(1.7)', delay: 1.2
@@ -1563,6 +1549,3 @@
   </script>
 </body>
 </html>
-
-
-  
